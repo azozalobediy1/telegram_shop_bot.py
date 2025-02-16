@@ -80,7 +80,35 @@ def buy_product(call: types.CallbackQuery):
 
 @dp.message_handler(commands=['help'])
 def send_help(message: types.Message):
-    bot.send_message(message.chat.id, "\nالاوامر المتاحة:\n/start - بدء البوت\n/products - عرض المنتجات\n/order - تقديم طلب\n/help - المساعدة")
+    bot.send_message(message.chat.id, "\nالاوامر المتاحة:\n/start - بدء البوت\n/products - عرض المنتجات\n/order - تقديم طلب\n/help - المساعدة\n/add_product - إضافة منتج جديد")
+
+@dp.message_handler(commands=['add_product'])
+def add_product(message: types.Message):
+    bot.send_message(message.chat.id, "أدخل اسم المنتج:")
+    
+    @dp.message_handler(content_types=types.ContentType.TEXT)
+    def get_product_name(msg: types.Message):
+        product_name = msg.text
+        bot.send_message(msg.chat.id, "أدخل سعر المنتج:")
+        
+        @dp.message_handler(content_types=types.ContentType.TEXT)
+        def get_product_price(msg2: types.Message):
+            try:
+                product_price = float(msg2.text)
+                bot.send_message(msg2.chat.id, "أدخل رابط صورة المنتج:")
+                
+                @dp.message_handler(content_types=types.ContentType.TEXT)
+                def get_product_image(msg3: types.Message):
+                    product_image = msg3.text
+                    conn = sqlite3.connect("shop.db")
+                    cursor = conn.cursor()
+                    cursor.execute("INSERT INTO products (name, price, image) VALUES (?, ?, ?)", (product_name, product_price, product_image))
+                    conn.commit()
+                    conn.close()
+                    bot.send_message(msg3.chat.id, "✅ تم إضافة المنتج بنجاح!")
+                
+            except ValueError:
+                bot.send_message(msg2.chat.id, "⚠️ يجب إدخال سعر صحيح بالأرقام فقط.")
 
 # تشغيل البوت
 if __name__ == "__main__":
