@@ -121,4 +121,12 @@ def add_product(message: types.Message):
 # تشغيل البوت
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    executor.start_polling(dp, skip_updates=True)
+   import asyncio
+
+async def main():
+    await dp.start_polling()
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
+    asyncio.run(main())
+
