@@ -2,7 +2,15 @@ import sqlite3
 import logging
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from aiogram.utils import executor
+import asyncio
+from aiogram import Bot, Dispatcher
+
+async def main():
+    await dp.start_polling()
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
 
 # إعدادات البوت
 TOKEN = "YOUR_BOT_TOKEN"
