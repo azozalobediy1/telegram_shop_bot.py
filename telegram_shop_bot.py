@@ -4,7 +4,7 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.types import Message
 
 # ضع التوكن الخاص بك هنا
-TOKEN = "8058710486:AAGVFuguZe5n_GUkY7ul_D1H"
+TOKEN = "8058710486:AAGVFuguZe5n_GUkY7ul_D1HXpk8QX6ST-U"
 # تفعيل نظام التسجيل لمراقبة الأخطاء
 logging.basicConfig(level=logging.INFO)
 
