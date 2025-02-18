@@ -5,16 +5,12 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, Message
 from aiogram.filters import Text
 
 # ضع التوكن الخاص بك هنا
-TOKEN = "8058710486:AAGVFuguZe5n_GUkY7ul_D1HXpk8QX6ST-U
-"
-
+TOKEN = "8058710486:AAGVFuguZe5n_GUkY7ul_D1HXpk8QX6ST-U"
 # تفعيل نظام التسجيل لمراقبة الأخطاء
 logging.basicConfig(level=logging.INFO)
-
 # إنشاء كائنات البوت والموزع
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
-
 # إنشاء كيبورد يحتوي على زر "📞 اتصل بنا"
 contact_keyboard = ReplyKeyboardMarkup(
     keyboard=[
@@ -22,7 +18,6 @@ contact_keyboard = ReplyKeyboardMarkup(
     ],
     resize_keyboard=True
 )
-
 # معلومات الاتصال
 CONTACT_INFO = """
 📞 **معلومات الاتصال:**
