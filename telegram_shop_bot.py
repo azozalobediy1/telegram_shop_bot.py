@@ -1,18 +1,17 @@
 import asyncio
 import logging
-from aiogram import Bot, Dispatcher, types
+from aiogram import Bot, Dispatcher, F, types
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, Message
-from aiogram.filters import Text
 
 # ضع التوكن الخاص بك هنا
-TOKEN = TOKEN = '8058710486:AAGVFuguZe5n_GUkY7ul_D1H'
-
+TOKEN = "8058710486:AAGVFuguZe5n_GUkY7ul_D1HXpk8QX6ST-U
+"
 
 # تفعيل نظام التسجيل لمراقبة الأخطاء
 logging.basicConfig(level=logging.INFO)
 
 # إنشاء كائنات البوت والموزع
-bot = Bot(token=TOKEN)
+bot = Bot(token=TOKEN, parse_mode="Markdown")
 dp = Dispatcher()
 
 # إنشاء كيبورد يحتوي على زر "📞 اتصل بنا"
@@ -30,7 +29,7 @@ CONTACT_INFO = """
 🌐 للتسوق عبر التطبيق: [اضغط هنا](https://www.telosshop.com)
 🔵 زيارة صفحتنا على الفيس بوك: [اضغط هنا](https://www.facebook.com/share/1RfvHRMBNr/?mibextid=wwXIfr)
 🛠 **الدعم التقني:** 07831922418
-🕔 **أوقات الدوام:** من الساعة 9 صباحًا لغاية 4 مساءً
+🕘 **أوقات الدوام:** من الساعة 9 صباحًا لغاية 4 مساءً
 """
 
 # أمر /start للترحيب بالمستخدم
@@ -47,7 +46,7 @@ async def contact_command_handler(message: Message):
     await message.answer(CONTACT_INFO, parse_mode="Markdown")
 
 # التعامل مع زر "📞 اتصل بنا"
-@dp.message_handler(Text(equals="📞 اتصل بنا"))
+@dp.message_handler(F.text == "📞 اتصل بنا")
 async def contact_button_handler(message: Message):
     await message.answer(CONTACT_INFO, parse_mode="Markdown")
 
