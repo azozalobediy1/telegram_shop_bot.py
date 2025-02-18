@@ -5,7 +5,8 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, Message
 from aiogram.filters import Text
 
 # ضع التوكن الخاص بك هنا
-TOKEN = "8058710486:AAGVFuguZe5n_GUkY7ul_D1HXpk8QX6ST-U"
+TOKEN = TOKEN = '8058710486:AAGVFuguZe5n_GUkY7ul_D1H'
+
 
 # تفعيل نظام التسجيل لمراقبة الأخطاء
 logging.basicConfig(level=logging.INFO)
